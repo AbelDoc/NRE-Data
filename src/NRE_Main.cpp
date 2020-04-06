@@ -8,8 +8,11 @@
      */
      
     #include "Header/NRE_Data.hpp"
-     
+    
+    using namespace NRE::Data;
+    
     int main(int, char**) {
+        DataBatch data;
         
         return 0;
     }
