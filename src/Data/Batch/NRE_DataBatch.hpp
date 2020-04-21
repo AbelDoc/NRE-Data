@@ -126,6 +126,12 @@
                          * @param data the data to add
                          */
                         void addData(MappedType data);
+                        /**
+                         * Create and add an entry to the data batch
+                         * @param eName  the entry's name
+                         * @param eValue the entry's value
+                         */
+                        void emplaceEntry(Utility::String const& eName, Utility::String const& eValue);
             };
         }
     }
