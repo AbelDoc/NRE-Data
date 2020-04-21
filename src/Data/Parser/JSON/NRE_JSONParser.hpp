@@ -86,7 +86,6 @@
                             String::SizeType comma;
                             if (next[0] == '{') {
                                 DataBatch* object = new DataBatch(name);
-                                std::cout << "Object = " << name << std::endl;
                                 auto rBrace = next.find("},");
                                 if (rBrace == String::NOT_FOUND) {
                                     rBrace = next.rfind('}', next.getSize() - 1);
@@ -111,7 +110,6 @@
                                 }
                                 auto value = next.substr(1, comma - 2);
                                 batch.addData(new Entry(name, value));
-                                std::cout << "Entry = " << name << ":" << value << std::endl;
                             }
                             if (!stop) {
                                 current = next.substr(comma + 1, next.getSize() - (comma + 1));

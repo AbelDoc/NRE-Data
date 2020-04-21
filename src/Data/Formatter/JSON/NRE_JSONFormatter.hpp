@@ -51,8 +51,7 @@
                         Utility::String nextTab(tab + "\t");
                         file.write("{\n" + nextTab + "\"");
                         auto toFormat = batch.getSize();
-                        for (auto& it : batch) {
-                            Data* data = it.second;
+                        for (auto data : batch) {
                             file.write(data->getName() + "\" : ");
                             if (data->isEntry()) {
                                 Entry* entry = static_cast <Entry*> (data);
