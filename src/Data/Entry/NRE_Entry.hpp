@@ -10,7 +10,6 @@
     #pragma once
 
     #include "../Data/NRE_Data.hpp"
-    
     /**
     * @namespace NRE
     * @brief The NearlyRealEngine's global namespace
@@ -27,6 +26,7 @@
              * @brief Manage one data value
              */
             class Entry : public Data {
+    
                 private :    // Fields
                     Utility::String value;  /**< The entry value */
 

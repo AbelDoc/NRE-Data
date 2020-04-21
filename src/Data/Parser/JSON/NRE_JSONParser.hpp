@@ -1,19 +1,16 @@
     
     /**
-     * @file NRE_Parser.hpp
-     * @brief Declaration of Data's API's Object : Parser
+     * @file NRE_JSONParser.hpp
+     * @brief Declaration of Data's API's Object : JSONParser
      * @author Louis ABEL
      * @date 21/04/2020
      * @copyright CC-BY-NC-SA
      */
-
+    
     #pragma once
-
-    #include <Header/NRE_IO.hpp>
-    #include "../Batch/NRE_DataBatch.hpp"
-    #include "../../Header/NRE_Exception.hpp"
-
-
+    
+    #include "../NRE_Parser.hpp"
+    
     /**
     * @namespace NRE
     * @brief The NearlyRealEngine's global namespace
@@ -26,11 +23,10 @@
         namespace Data {
         
             /**
-             * @class Parser
-             * @brief Describe an abstract parser
+             * @class JSONParser
+             * @brief Describe a JSON parser
              */
-            template <class T>
-            class Parser : public Utility::StaticInterface<Parser<T>> {
+            class JSONParser : public Parser<JSONParser> {
                 public :    // Methods
                     /**
                      * Parse the given file and return a data batch from it
@@ -38,7 +34,12 @@
                      * @return     the parsed data batch
                      */
                     DataBatch parse(IO::File const& file) const {
-                        return this->impl().parse(file);
+                        IO::InputFile input(file);
+                        if (input.isOpen()) {
+                            // Parse
+                        } else {
+                            throw Exception::ParserException("File can't be opened : " + file.getPath());
+                        }
                     }
             };
         }
