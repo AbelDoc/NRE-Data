@@ -17,6 +17,9 @@
         JSONFormatter formatter;
         
         DataBatch data = parser.parse("test.json");
+        auto& object = data.getBatch("object");
+        auto& entry = object.getEntry("entry");
+        std::cout << entry.getValue() << std::endl;
         formatter.format(data, "test2.json");
         
         return 0;

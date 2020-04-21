@@ -9,7 +9,7 @@
     
     #pragma once
 
-    #include "../Data/NRE_Data.hpp"
+    #include "../Entry/NRE_Entry.hpp"
 
     /**
     * @namespace NRE
@@ -81,6 +81,20 @@
                          * @param n the batch's name
                          */
                         DataBatch(Utility::String const& n = "");
+                        
+                    //## Copy Constructor ##//
+                        /**
+                         * Copy batch into this
+                         * @param batch the data batch to copy
+                         */
+                        DataBatch(DataBatch const& batch) = default;
+        
+                    //## Move Constructor ##//
+                        /**
+                         * Move batch into this
+                         * @param batch the data batch to move
+                         */
+                        DataBatch(DataBatch && batch) = default;
     
                     //## Deconstructor ##//
                         /**
@@ -89,6 +103,46 @@
                         ~DataBatch();
     
                     //## Getter ##//
+                        /**
+                         * Access a particular element with bound checking
+                         * @param  k the element key
+                         * @return   the corresponding element
+                         */
+                        MappedType& get(KeyType const& k);
+                        /**
+                         * Access a particular element with bound checking
+                         * @param  k the element key
+                         * @return   the corresponding element
+                         */
+                        MappedType const& get(KeyType const& k) const;
+                        /**
+                         * Access a particular batch with bound checking (and try a cast on it)
+                         * @param k the element key
+                         * @return  the casted data batch
+                         */
+                        DataBatch& getBatch(KeyType const& k);
+                        /**
+                         * Access a particular batch with bound checking (and try a cast on it)
+                         * @param k the element key
+                         * @return  the casted data batch
+                         */
+                        DataBatch const& getBatch(KeyType const& k) const;
+                        /**
+                         * Access a particular entry with bound checking (and try a cast on it)
+                         * @param k the element key
+                         * @return  the casted data entry
+                         */
+                        Entry& getEntry(KeyType const& k);
+                        /**
+                         * Access a particular entry with bound checking (and try a cast on it)
+                         * @param k the element key
+                         * @return  the casted data entry
+                         */
+                        Entry const& getEntry(KeyType const& k) const;
+                        /**
+                         * @return if the batch is empty
+                         */
+                        bool isEmpty() const;
                         /**
                          * @return the number of entry in the batch
                          */
@@ -132,6 +186,38 @@
                          * @param eValue the entry's value
                          */
                         void emplaceEntry(Utility::String const& eName, Utility::String const& eValue);
+                        /**
+                         * Clear the data batch
+                         */
+                        void clear();
+    
+                    //## Assignment Operator ##//
+                        /**
+                         * Copy batch into this
+                         * @param batch the data batch to copy into this
+                         * @return      the reference of himself
+                         */
+                        DataBatch& operator =(DataBatch const& batch);
+                        /**
+                         * Move batch into this
+                         * @param batch the data batch to move into this
+                         * @return      the reference of himself
+                         */
+                        DataBatch& operator =(DataBatch && batch);
+        
+                    //## Access Operator ##//
+                        /**
+                         * Try to access the element designed by the given key, if not found insert a default one
+                         * @param  k the key used for access
+                         * @return   the found/inserted element
+                         */
+                        MappedType& operator[](KeyType const& k);
+                        /**
+                         * Try to access the element designed by the given key, if not found insert a default one
+                         * @param  k the key used for access
+                         * @return   the found/inserted element
+                         */
+                        MappedType& operator[](KeyType && k);
             };
         }
     }
