@@ -28,10 +28,14 @@
              */
             class DataBatch : public Data {
                 public :    // Traits
+                    /** The container's mapped type */
+                    using MappedType            = Data*;
+                    /** The container's key type */
+                    using KeyType               = Utility::String;
                     /** The container's allocated type */
-                    using ValueType             = Data*;
+                    using ValueType             = Utility::Pair<KeyType, MappedType>;
                     /** The internal container */
-                    using Container             = Utility::Vector<ValueType>;
+                    using Container             = Utility::UnorderedMap<KeyType, MappedType>;
                     /** The object's size type */
                     using SizeType              = std::size_t;
                     /** The object's difference type */
@@ -121,13 +125,7 @@
                          * Add a data into the batch
                          * @param data the data to add
                          */
-                        void addData(ValueType data);
-                        /**
-                         * Create and add an entry to the data batch
-                         * @param eName  the entry's name
-                         * @param eValue the entry's value
-                         */
-                        void emplaceEntry(Utility::String const& eName, Utility::String const& eValue);
+                        void addData(MappedType data);
             };
         }
     }

@@ -14,8 +14,8 @@
             }
             
             inline DataBatch::~DataBatch() {
-                for (auto d : datas) {
-                    delete d;
+                for (auto& it : datas) {
+                    delete it.second;
                 }
             }
             
@@ -47,12 +47,8 @@
                 return datas.cend();
             }
     
-            inline void DataBatch::addData(ValueType data) {
-                datas.emplaceBack(data);
-            }
-            
-            inline void DataBatch::emplaceEntry(Utility::String const& eName, Utility::String const& eValue) {
-                datas.emplaceBack(new Entry(eName, eValue));
+            inline void DataBatch::addData(MappedType data) {
+                datas.emplace(ValueType(data->getName(), data));
             }
             
         }
