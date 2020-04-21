@@ -49,6 +49,10 @@
                          * @return the data's name
                          */
                         Utility::String const& getName() const;
+                        /**
+                         * @return if the data is an entry
+                         */
+                        virtual bool isEntry() const;
             };
         
         }

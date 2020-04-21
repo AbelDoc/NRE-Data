@@ -50,7 +50,11 @@
                         
                         return batch;
                     }
-    
+                    /**
+                     * Read a whole file and return its content
+                     * @param file the file to read
+                     * @return     the file's content
+                     */
                     Utility::String readFile(IO::File const& file) const {
                         IO::InputFile input(file);
                         input.open();
@@ -60,8 +64,12 @@
                         auto tmp = content.str();
                         return Utility::String(tmp.size(), tmp.data());
                     }
-                    
-                    void parseObject(Utility::String const& txt, DataBatch& batch, int depth = 0) const {
+                    /**
+                     * Parse a JSON object from the given text
+                     * @param txt   the text to parse
+                     * @param batch the data to fill
+                     */
+                    void parseObject(Utility::String const& txt, DataBatch& batch) const {
                         using namespace NRE::Utility;
                         using namespace NRE::Exception;
 
@@ -78,9 +86,6 @@
                             String::SizeType comma;
                             if (next[0] == '{') {
                                 DataBatch* object = new DataBatch(name);
-                                for (int i = 0; i < depth; i++) {
-                                    std::cout << "\t";
-                                }
                                 std::cout << "Object = " << name << std::endl;
                                 auto rBrace = next.find("},");
                                 if (rBrace == String::NOT_FOUND) {
@@ -97,7 +102,7 @@
                                     comma = rBrace + 1;
                                 }
                                 batch.addData(object);
-                                parseObject(next.substr(1, rBrace - 1), *object, depth + 1);
+                                parseObject(next.substr(1, rBrace - 1), *object);
                             } else {
                                 comma = next.find(',');
                                 if (comma == String::NOT_FOUND) {
@@ -106,16 +111,12 @@
                                 }
                                 auto value = next.substr(1, comma - 2);
                                 batch.addData(new Entry(name, value));
-                                for (int i = 0; i < depth; i++) {
-                                    std::cout << "\t";
-                                }
                                 std::cout << "Entry = " << name << ":" << value << std::endl;
                             }
                             if (!stop) {
                                 current = next.substr(comma + 1, next.getSize() - (comma + 1));
                             }
                         }
-                        
                     }
             };
         }

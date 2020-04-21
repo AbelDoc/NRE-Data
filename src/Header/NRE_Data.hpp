@@ -16,4 +16,7 @@
     #include "src/Data/Parser/NRE_Parser.hpp"
     #include "src/Data/Parser/JSON/NRE_JSONParser.hpp"
 
+    #include "src/Data/Formatter/NRE_Formatter.hpp"
+    #include "src/Data/Formatter/JSON/NRE_JSONFormatter.hpp"
+
     #include "NRE_Exception.hpp"

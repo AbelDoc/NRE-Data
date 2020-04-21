@@ -14,7 +14,10 @@
     
     int main(int, char**) {
         JSONParser parser;
+        JSONFormatter formatter;
+        
         DataBatch data = parser.parse("test.json");
+        formatter.format(data, "test2.json");
         
         return 0;
     }

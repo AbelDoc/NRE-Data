@@ -17,5 +17,9 @@
                 return name;
             }
             
+            inline bool Data::isEntry() const {
+                return false;
+            }
+            
         }
     }

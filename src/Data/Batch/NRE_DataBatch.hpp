@@ -51,7 +51,7 @@
                     /** Mutable random access iterator */
                     using Iterator              = typename Container::Iterator;
                     /** Immuable random access iterator */
-                    using ConstIterator         = typename Container::ConstPointer;
+                    using ConstIterator         = typename Container::ConstIterator;
                     /** STL compatibility */
                     using value_type            = ValueType;
                     /** STL compatibility */
@@ -87,6 +87,38 @@
                          * DataBatch Deconstructor
                          */
                         ~DataBatch();
+    
+                    //## Getter ##//
+                        /**
+                         * @return the number of entry in the batch
+                         */
+                        SizeType getSize() const;
+    
+                    //## Iterator Access ##//
+                        /**
+                         * @return an iterator on the first element
+                         */
+                        Iterator begin();
+                        /**
+                         * @return a const iterator on the first element
+                         */
+                        ConstIterator begin() const;
+                        /**
+                         * @return a const iterator on the first element
+                         */
+                        ConstIterator cbegin() const;
+                        /**
+                         * @return an iterator on the end of the container
+                         */
+                        Iterator end();
+                        /**
+                         * @return a const iterator on the end of the container
+                         */
+                        ConstIterator end() const;
+                        /**
+                         * @return a const iterator on the end of the container
+                         */
+                        ConstIterator cend() const;
     
                     //## Methods ##//
                         /**

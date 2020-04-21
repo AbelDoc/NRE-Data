@@ -26,7 +26,6 @@
              * @brief Manage one data value
              */
             class Entry : public Data {
-    
                 private :    // Fields
                     Utility::String value;  /**< The entry value */
 
@@ -38,6 +37,16 @@
                          * @param v the entry's value
                          */
                         Entry(Utility::String const& n, Utility::String const& v);
+    
+                    //## Getter ##//
+                        /**
+                         * @return the entry's value
+                         */
+                        Utility::String const& getValue() const;
+                        /**
+                         * @return if the data is an entry
+                         */
+                        bool isEntry() const override;
             };
         
         }

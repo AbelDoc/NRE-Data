@@ -13,5 +13,13 @@
             inline Entry::Entry(Utility::String const& n, Utility::String const& v) : Data(n), value(v) {
             }
             
+            inline Utility::String const& Entry::getValue() const {
+                return value;
+            }
+            
+            inline bool Entry::isEntry() const {
+                return true;
+            }
+            
         }
     }
