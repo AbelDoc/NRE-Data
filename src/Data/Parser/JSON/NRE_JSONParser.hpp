@@ -100,7 +100,7 @@
                                 } else {
                                     comma = rBrace + 1;
                                 }
-                                batch.addData(object);
+                                batch.add(object);
                                 parseObject(next.substr(1, rBrace - 1), *object);
                             } else {
                                 comma = next.find(',');
@@ -109,7 +109,7 @@
                                     comma = next.getSize();
                                 }
                                 auto value = next.substr(1, comma - 2);
-                                batch.addData(new Entry(name, value));
+                                batch.add(name, value);
                             }
                             if (!stop) {
                                 current = next.substr(comma + 1, next.getSize() - (comma + 1));

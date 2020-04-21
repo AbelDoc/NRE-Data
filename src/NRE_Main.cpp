@@ -17,9 +17,15 @@
         JSONFormatter formatter;
         
         DataBatch data = parser.parse("test.json");
-        auto& object = data.getBatch("object");
-        auto& entry = object.getEntry("entry");
-        std::cout << entry.getValue() << std::endl;
+        std::cout << data.getBatch("object").getEntry("entry").getValue() << std::endl;
+        data.clear();
+        
+        DataBatch* shaders = new DataBatch("shaders");
+        data.add(shaders);
+        shaders->add("SSAO", "true");
+        shaders->add("Shadow", "true");
+        shaders->add("Triplanar", "true");
+        
         formatter.format(data, "test2.json");
         
         return 0;

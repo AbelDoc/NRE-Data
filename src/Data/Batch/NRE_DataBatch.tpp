@@ -73,11 +73,11 @@
                 return datas.cend();
             }
     
-            inline void DataBatch::addData(MappedType data) {
+            inline void DataBatch::add(MappedType data) {
                 datas.emplace(ValueType(data->getName(), data));
             }
     
-            inline void DataBatch::emplaceEntry(Utility::String const& eName, Utility::String const& eValue) {
+            inline void DataBatch::add(Utility::String const& eName, Utility::String const& eValue) {
                 datas.emplace(ValueType(eName, new Entry(eName, eValue)));
             }
             

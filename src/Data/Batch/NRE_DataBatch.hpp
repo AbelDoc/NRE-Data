@@ -179,13 +179,13 @@
                          * Add a data into the batch
                          * @param data the data to add
                          */
-                        void addData(MappedType data);
+                        void add(MappedType data);
                         /**
                          * Create and add an entry to the data batch
                          * @param eName  the entry's name
                          * @param eValue the entry's value
                          */
-                        void emplaceEntry(Utility::String const& eName, Utility::String const& eValue);
+                        void add(Utility::String const& eName, Utility::String const& eValue);
                         /**
                          * Clear the data batch
                          */
@@ -204,7 +204,7 @@
                          * @return      the reference of himself
                          */
                         DataBatch& operator =(DataBatch && batch);
-        
+            
                     //## Access Operator ##//
                         /**
                          * Try to access the element designed by the given key, if not found insert a default one
