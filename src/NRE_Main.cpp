@@ -10,9 +10,11 @@
     #include "Header/NRE_Data.hpp"
     
     using namespace NRE::Data;
+    using namespace NRE::Utility;
     
     int main(int, char**) {
-        DataBatch data;
+        JSONParser parser;
+        DataBatch data = parser.parse("test.json");
         
         return 0;
     }

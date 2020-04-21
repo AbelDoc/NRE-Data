@@ -9,6 +9,7 @@
     
     #pragma once
     
+    #include <sstream>
     #include "../NRE_Parser.hpp"
     
     /**
@@ -34,12 +35,87 @@
                      * @return     the parsed data batch
                      */
                     DataBatch parse(IO::File const& file) const {
-                        IO::InputFile input(file);
-                        if (input.isOpen()) {
-                            // Parse
-                        } else {
-                            throw Exception::ParserException("File can't be opened : " + file.getPath());
+                        using namespace NRE::IO;
+                        using namespace NRE::Utility;
+                        using namespace NRE::Exception;
+                        DataBatch batch;
+    
+                        String txt(readFile(file));
+                        txt.erase(std::remove_if(txt.begin(), txt.end(), isspace), txt.end());
+    
+                        if (txt[0] != '{' || txt[txt.getSize() - 1] != '}') {
+                            throw ParserException("JSON Format not respected : Main object not contained in braces");
                         }
+                        parseObject(txt.substr(1, txt.getSize() - 2), batch);
+                        
+                        return batch;
+                    }
+    
+                    Utility::String readFile(IO::File const& file) const {
+                        IO::InputFile input(file);
+                        input.open();
+                        
+                        std::stringstream content;
+                        content << input.getStream().rdbuf();
+                        auto tmp = content.str();
+                        return Utility::String(tmp.size(), tmp.data());
+                    }
+                    
+                    void parseObject(Utility::String const& txt, DataBatch& batch, int depth = 0) const {
+                        using namespace NRE::Utility;
+                        using namespace NRE::Exception;
+
+                        bool stop = false;
+                        Utility::String current = txt;
+                        
+                        while (!stop) {
+                            auto size = current.getSize();
+                            auto colon = current.find(':', 1);
+                            auto name = current.substr(1, colon - 2);
+                            auto next = current.substr(colon + 1, size - (colon + 1));
+    
+                            
+                            String::SizeType comma;
+                            if (next[0] == '{') {
+                                DataBatch* object = new DataBatch(name);
+                                for (int i = 0; i < depth; i++) {
+                                    std::cout << "\t";
+                                }
+                                std::cout << "Object = " << name << std::endl;
+                                auto rBrace = next.find("},");
+                                if (rBrace == String::NOT_FOUND) {
+                                    rBrace = next.rfind('}', next.getSize() - 1);
+                                    if (rBrace == String::NOT_FOUND) {
+                                        throw ParserException("JSON Format not respected : Object :" + name + ", not contained in braces");
+                                    } else {
+                                        comma = next.find(',', rBrace);
+                                        if (comma == String::NOT_FOUND) {
+                                            stop = true;
+                                        }
+                                    }
+                                } else {
+                                    comma = rBrace + 1;
+                                }
+                                batch.addData(object);
+                                parseObject(next.substr(1, rBrace - 1), *object, depth + 1);
+                            } else {
+                                comma = next.find(',');
+                                if (comma == String::NOT_FOUND) {
+                                    stop = true;
+                                    comma = next.getSize();
+                                }
+                                auto value = next.substr(1, comma - 2);
+                                batch.addData(new Entry(name, value));
+                                for (int i = 0; i < depth; i++) {
+                                    std::cout << "\t";
+                                }
+                                std::cout << "Entry = " << name << ":" << value << std::endl;
+                            }
+                            if (!stop) {
+                                current = next.substr(comma + 1, next.getSize() - (comma + 1));
+                            }
+                        }
+                        
                     }
             };
         }

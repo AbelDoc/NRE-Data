@@ -13,5 +13,9 @@
             inline Data::Data(Utility::String const& n) : name(n) {
             }
             
+            inline Utility::String const& Data::getName() const {
+                return name;
+            }
+            
         }
     }

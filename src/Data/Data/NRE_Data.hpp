@@ -37,6 +37,18 @@
                          * @param n the data's name
                          */
                         Data(Utility::String const& n);
+    
+                    //## Deconstructor ##//
+                        /**
+                         * Data Deconstructor
+                         */
+                        virtual ~Data() = default;
+    
+                    //## Getter ##//
+                        /**
+                         * @return the data's name
+                         */
+                        Utility::String const& getName() const;
             };
         
         }

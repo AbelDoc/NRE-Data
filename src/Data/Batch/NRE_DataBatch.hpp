@@ -29,7 +29,7 @@
             class DataBatch : public Data {
                 public :    // Traits
                     /** The container's mapped type */
-                    using MappedType            = Data;
+                    using MappedType            = Data*;
                     /** The container's key type */
                     using KeyType               = Utility::String;
                     /** The container's allocated type */
@@ -81,6 +81,19 @@
                          * @param n the batch's name
                          */
                         DataBatch(Utility::String const& n = "");
+    
+                    //## Deconstructor ##//
+                        /**
+                         * DataBatch Deconstructor
+                         */
+                        ~DataBatch();
+    
+                    //## Methods ##//
+                        /**
+                         * Add a data into the batch
+                         * @param data the data to add
+                         */
+                        void addData(MappedType data);
             };
         }
     }
