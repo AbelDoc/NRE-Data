@@ -8,12 +8,14 @@
      */
     
     #pragma once
-
+    
+    #include <sstream>
     #include "../Data/NRE_Data.hpp"
+    
     /**
-    * @namespace NRE
-    * @brief The NearlyRealEngine's global namespace
-    */
+     * @namespace NRE
+     * @brief The NearlyRealEngine's global namespace
+     */
     namespace NRE {
         /**
          * @namespace Data
@@ -47,6 +49,11 @@
                          * @return if the data is an entry
                          */
                         bool isEntry() const override;
+                        /**
+                         * @return a new variable created from the entry value
+                         */
+                        template <class T>
+                        T get() const;
             };
         
         }

@@ -21,10 +21,21 @@
         data.clear();
         
         DataBatch* shaders = new DataBatch("shaders");
+        DataBatch* ssao = new DataBatch("SSAO");
         data.add(shaders);
-        shaders->add("SSAO", "true");
+        shaders->add(ssao);
+        ssao->add("enable", "true");
+        ssao->add("samples", "16");
+        ssao->add("kernel size", "64");
         shaders->add("Shadow", "true");
         shaders->add("Triplanar", "true");
+        
+        auto enable = shaders->getBatch("SSAO").getEntry("enable").get<bool>();
+        auto samples = shaders->getBatch("SSAO").getEntry("samples").get<int>();
+        auto kernelSize = shaders->getBatch("SSAO").getEntry("kernel size").get<int>();
+        std::cout << "Enabled : " << enable << std::endl;
+        std::cout << "Samples : " << samples << std::endl;
+        std::cout << "Kernel Size : " << kernelSize << std::endl;
         
         formatter.format(data, "test2.json");
         

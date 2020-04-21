@@ -12,9 +12,9 @@
     #include <Header/NRE_Utility.hpp>
     
     /**
-    * @namespace NRE
-    * @brief The NearlyRealEngine's global namespace
-    */
+     * @namespace NRE
+     * @brief The NearlyRealEngine's global namespace
+     */
     namespace NRE {
         /**
          * @namespace Data

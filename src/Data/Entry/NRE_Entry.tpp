@@ -21,5 +21,115 @@
                 return true;
             }
             
+            template <>
+            inline short int Entry::get() const {
+                std::stringstream parser;
+                parser << value;
+                short int res;
+                parser >> res;
+                return res;
+            }
+    
+            template <>
+            inline int Entry::get() const {
+                std::stringstream parser;
+                parser << value;
+                int res;
+                parser >> res;
+                return res;
+            }
+    
+            template <>
+            inline long int Entry::get() const {
+                std::stringstream parser;
+                parser << value;
+                long int res;
+                parser >> res;
+                return res;
+            }
+    
+            template <>
+            inline long long int Entry::get() const {
+                std::stringstream parser;
+                parser << value;
+                long long int res;
+                parser >> res;
+                return res;
+            }
+    
+            template <>
+            inline unsigned short int Entry::get() const {
+                std::stringstream parser;
+                parser << value;
+                unsigned short int res;
+                parser >> res;
+                return res;
+            }
+    
+            template <>
+            inline unsigned int Entry::get() const {
+                std::stringstream parser;
+                parser << value;
+                unsigned int res;
+                parser >> res;
+                return res;
+            }
+    
+            template <>
+            inline unsigned long int Entry::get() const {
+                std::stringstream parser;
+                parser << value;
+                unsigned long int res;
+                parser >> res;
+                return res;
+            }
+    
+            template <>
+            inline unsigned long long int Entry::get() const {
+                std::stringstream parser;
+                parser << value;
+                unsigned long long int res;
+                parser >> res;
+                return res;
+            }
+    
+            template <>
+            inline float Entry::get() const {
+                std::stringstream parser;
+                parser << value;
+                float res;
+                parser >> res;
+                return res;
+            }
+    
+            template <>
+            inline double Entry::get() const {
+                std::stringstream parser;
+                parser << value;
+                double res;
+                parser >> res;
+                return res;
+            }
+    
+            template <>
+            inline long double Entry::get() const {
+                std::stringstream parser;
+                parser << value;
+                long double res;
+                parser >> res;
+                return res;
+            }
+            
+            template <>
+            inline bool Entry::get() const {
+                return value != "false" || value != "0";
+                
+            }
+            
+            template <class T>
+            inline T Entry::get() const {
+                return T(value);
+            }
+            
         }
     }
