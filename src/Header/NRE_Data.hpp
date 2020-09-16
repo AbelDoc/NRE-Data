@@ -9,14 +9,14 @@
     
     #pragma once
 
-    #include "src/Data/Data/NRE_Data.hpp"
-    #include "src/Data/Entry/NRE_Entry.hpp"
-    #include "src/Data/Batch/NRE_DataBatch.hpp"
+    #include "../Data/Data/NRE_Data.hpp"
+    #include "../Data/Entry/NRE_Entry.hpp"
+    #include "../Data/Batch/NRE_DataBatch.hpp"
     
-    #include "src/Data/Parser/NRE_Parser.hpp"
-    #include "src/Data/Parser/JSON/NRE_JSONParser.hpp"
+    #include "../Data/Parser/NRE_Parser.hpp"
+    #include "../Data/Parser/JSON/NRE_JSONParser.hpp"
 
-    #include "src/Data/Formatter/NRE_Formatter.hpp"
-    #include "src/Data/Formatter/JSON/NRE_JSONFormatter.hpp"
+    #include "../Data/Formatter/NRE_Formatter.hpp"
+    #include "../Data/Formatter/JSON/NRE_JSONFormatter.hpp"
 
     #include "NRE_Exception.hpp"

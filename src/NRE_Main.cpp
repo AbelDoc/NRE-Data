@@ -16,7 +16,7 @@
         JSONParser parser;
         JSONFormatter formatter;
         
-        DataBatch data = parser.parse("test.json");
+        DataBatch data = parser.parse("input.json");
         std::cout << data.getBatch("object").getEntry("entry").getValue() << std::endl;
         data.clear();
         
@@ -37,7 +37,7 @@
         std::cout << "Samples : " << samples << std::endl;
         std::cout << "Kernel Size : " << kernelSize << std::endl;
         
-        formatter.format(data, "test2.json");
+        formatter.format(data, "output.json");
         
         return 0;
     }
