@@ -9,7 +9,7 @@
     
     #pragma once
     
-    #include <Header/NRE_Utility.hpp>
+    #include <Header/NRE_Core.hpp>
     
     /**
      * @namespace NRE
@@ -28,7 +28,7 @@
              */
             class Data {
                 protected : // Fields
-                    Utility::String name;   /**< The entry name */
+                    Core::String name;   /**< The entry name */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -36,7 +36,7 @@
                          * Construct a data
                          * @param n the data's name
                          */
-                        Data(Utility::String const& n);
+                        Data(Core::String const& n);
     
                     //## Deconstructor ##//
                         /**
@@ -48,7 +48,7 @@
                         /**
                          * @return the data's name
                          */
-                        Utility::String const& getName() const;
+                        Core::String const& getName() const;
                         /**
                          * @return if the data is an entry
                          */

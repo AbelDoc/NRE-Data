@@ -47,8 +47,8 @@
                      * @param file  the output file
                      * @param tab   improve readability with recursive output
                      */
-                    void formatBatch(DataBatch const& batch, IO::OutputFile& file, Utility::String const& tab) const {
-                        Utility::String nextTab(tab + "\t");
+                    void formatBatch(DataBatch const& batch, IO::OutputFile& file, Core::String const& tab) const {
+                        Core::String nextTab(tab + "\t");
                         file.write("{\n" + nextTab + "\"");
                         auto toFormat = batch.getSize();
                         for (auto& it : batch) {

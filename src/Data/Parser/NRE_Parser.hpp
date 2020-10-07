@@ -30,7 +30,7 @@
              * @brief Describe an abstract parser
              */
             template <class T>
-            class Parser : public Utility::StaticInterface<Parser<T>> {
+            class Parser : public Core::StaticInterface<Parser<T>> {
                 public :    // Methods
                     /**
                      * Parse the given file and return a data batch from it

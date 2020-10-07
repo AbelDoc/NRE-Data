@@ -10,7 +10,7 @@
     #include "Header/NRE_Data.hpp"
     
     using namespace NRE::Data;
-    using namespace NRE::Utility;
+    using namespace NRE::Core;
     
     int main(int, char**) {
         JSONParser parser;

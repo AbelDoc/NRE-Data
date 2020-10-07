@@ -10,10 +10,10 @@
     namespace NRE {
         namespace Data {
             
-            inline Entry::Entry(Utility::String const& n, Utility::String const& v) : Data(n), value(v) {
+            inline Entry::Entry(Core::String const& n, Core::String const& v) : Data(n), value(v) {
             }
             
-            inline Utility::String const& Entry::getValue() const {
+            inline Core::String const& Entry::getValue() const {
                 return value;
             }
             

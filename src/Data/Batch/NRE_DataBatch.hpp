@@ -31,11 +31,11 @@
                     /** The container's mapped type */
                     using MappedType            = Data*;
                     /** The container's key type */
-                    using KeyType               = Utility::String;
+                    using KeyType               = Core::String;
                     /** The container's allocated type */
-                    using ValueType             = Utility::Pair<KeyType, MappedType>;
+                    using ValueType             = Core::Pair<KeyType, MappedType>;
                     /** The internal container */
-                    using Container             = Utility::UnorderedMap<KeyType, MappedType>;
+                    using Container             = Core::UnorderedMap<KeyType, MappedType>;
                     /** The object's size type */
                     using SizeType              = std::size_t;
                     /** The object's difference type */
@@ -80,7 +80,7 @@
                          * Construct an empty data batch
                          * @param n the batch's name
                          */
-                        DataBatch(Utility::String const& n = "");
+                        DataBatch(Core::String const& n = "");
                         
                     //## Copy Constructor ##//
                         /**
@@ -185,7 +185,7 @@
                          * @param eName  the entry's name
                          * @param eValue the entry's value
                          */
-                        void add(Utility::String const& eName, Utility::String const& eValue);
+                        void add(Core::String const& eName, Core::String const& eValue);
                         /**
                          * Clear the data batch
                          */

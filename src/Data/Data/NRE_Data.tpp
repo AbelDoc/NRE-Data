@@ -10,10 +10,10 @@
     namespace NRE {
         namespace Data {
             
-            inline Data::Data(Utility::String const& n) : name(n) {
+            inline Data::Data(Core::String const& n) : name(n) {
             }
             
-            inline Utility::String const& Data::getName() const {
+            inline Core::String const& Data::getName() const {
                 return name;
             }
             

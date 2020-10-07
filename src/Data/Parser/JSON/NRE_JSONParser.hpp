@@ -36,7 +36,7 @@
                      */
                     DataBatch parse(IO::File const& file) const {
                         using namespace NRE::IO;
-                        using namespace NRE::Utility;
+                        using namespace NRE::Core;
                         using namespace NRE::Exception;
                         DataBatch batch;
     
@@ -55,26 +55,26 @@
                      * @param file the file to read
                      * @return     the file's content
                      */
-                    Utility::String readFile(IO::File const& file) const {
+                    Core::String readFile(IO::File const& file) const {
                         IO::InputFile input(file);
                         input.open();
                         
                         std::stringstream content;
                         content << input.getStream().rdbuf();
                         auto tmp = content.str();
-                        return Utility::String(tmp.size(), tmp.data());
+                        return Core::String(tmp.size(), tmp.data());
                     }
                     /**
                      * Parse a JSON object from the given text
                      * @param txt   the text to parse
                      * @param batch the data to fill
                      */
-                    void parseObject(Utility::String const& txt, DataBatch& batch) const {
-                        using namespace NRE::Utility;
+                    void parseObject(Core::String const& txt, DataBatch& batch) const {
+                        using namespace NRE::Core;
                         using namespace NRE::Exception;
 
                         bool stop = false;
-                        Utility::String current = txt;
+                        Core::String current = txt;
                         
                         while (!stop) {
                             auto size = current.getSize();

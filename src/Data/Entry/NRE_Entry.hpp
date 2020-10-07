@@ -29,7 +29,7 @@
              */
             class Entry : public Data {
                 private :    // Fields
-                    Utility::String value;  /**< The entry value */
+                    Core::String value;  /**< The entry value */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -38,13 +38,13 @@
                          * @param n the entry's name
                          * @param v the entry's value
                          */
-                        Entry(Utility::String const& n, Utility::String const& v);
+                        Entry(Core::String const& n, Core::String const& v);
     
                     //## Getter ##//
                         /**
                          * @return the entry's value
                          */
-                        Utility::String const& getValue() const;
+                        Core::String const& getValue() const;
                         /**
                          * @return if the data is an entry
                          */

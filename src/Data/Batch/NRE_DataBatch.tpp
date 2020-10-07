@@ -10,7 +10,7 @@
     namespace NRE {
         namespace Data {
             
-            inline DataBatch::DataBatch(Utility::String const& n) : Data(n) {
+            inline DataBatch::DataBatch(Core::String const& n) : Data(n) {
             }
             
             inline DataBatch::~DataBatch() {
@@ -77,7 +77,7 @@
                 datas.emplace(ValueType(data->getName(), data));
             }
     
-            inline void DataBatch::add(Utility::String const& eName, Utility::String const& eValue) {
+            inline void DataBatch::add(Core::String const& eName, Core::String const& eValue) {
                 datas.emplace(ValueType(eName, new Entry(eName, eValue)));
             }
             

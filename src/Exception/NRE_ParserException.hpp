@@ -9,7 +9,7 @@
     
     #pragma once
     
-    #include <Header/NRE_Utility.hpp>
+    #include <Header/NRE_Core.hpp>
     
     /**
      * @namespace NRE
@@ -18,7 +18,7 @@
     namespace NRE {
         /**
          * @namespace Exception
-         * @brief Utility's API
+         * @brief Core's API
          */
         namespace Exception {
             
@@ -32,7 +32,7 @@
                      * Construct the exception with a custom log
                      * @param log the exception's log
                      */
-                    ParserException(Utility::String const& log) throw() : IException(log) {
+                    ParserException(Core::String const& log) throw() : IException(log) {
                     }
             };
         }

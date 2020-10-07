@@ -29,7 +29,7 @@
              * @brief Describe an abstract formatter
              */
             template <class T>
-            class Formatter : public Utility::StaticInterface<Formatter<T>> {
+            class Formatter : public Core::StaticInterface<Formatter<T>> {
                 public :    // Methods
                     /**
                      * Format the given data into the given file
